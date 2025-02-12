@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cartographies - Page 1</title>
+    <link rel="stylesheet" href="ol.css" />
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            border: 10px solid #839192;
+        }
+        .page-container {
+            margin: 20px;
+            border: 2px solid #99a3a4;
+            padding: 10px;
+            background-color: white;
+            margin-left: 30px;
+        }
+        .map-header {
+            text-align: center;
+            font-weight: bold;
+            font-size: 18px;
+            margin-bottom: 15px;
+            padding: 10px;
+            background-color: #99a3a4;
+            color: white;
+        }
+        .title-banner {
+            text-align: center;
+            font-weight: bold;
+            font-size: 22px;
+            padding: 15px;
+            background-color:#1e8449;
+            color: white;
+            margin-bottom: 20px;
+        }
+        .map-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 3px solid black;
+            position: relative;
+        }
+        .map-container {
+            width: 49%;
+            height: 600px;
+            position: relative;
+        }
+        .legend {
+            padding: 10px;
+            background: rgba(255, 255, 255, 0.8);
+            border: 1px solid black;
+            width: fit-content;
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
+            z-index: 1000;
+            font-size: 14px;
+            
+                /* Style spécifique à la légende de la carte 3 */
+        #legendMap3 {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            background: rgba(255, 255, 255, 0.8);
+            padding: 10px;
+            border: 1px solid black;
+            font-size: 14px;
+            z-index: 1000;
+        }
+    </style>
+</head>
+<body>
+    <div class="title-banner">Cartographie des fauches dans l'Est de la Moselle</div>
+    <div class="page-container">
+        <div class="map-header">1 - Estimation par méthode de seuillage</div>
+        <div class="map-row">
+            <div id="map1a" class="map-container">
+                <div class="legend">
+                   <strong>Nombre de fauches</strong><br>
+                    <span style="background: #ccd1d1; padding:5px 10px; display:inline-block;"></span> Pas de fauche<br>
+                    <span style="background:#d7bde2; padding:5px 10px; display:inline-block;"></span> 1 fauche<br>
+                    <span style="background:#a569bd; padding:5px 10px; display:inline-block;"></span> 2 fauches<br>
+                    <span style="background:#7d3c98; padding:5px 10px; display:inline-block;"></span> 3 fauches<br>
+                    <span style="background:#4a235a; padding:5px 10px; display:inline-block;"></span> 4 fauches ou plus<br>
+                </div>
+            </div>
+            <div id="map1b" class="map-container">
+                <div class="legend">
+                    <strong>Mois de la 1ère fauche</strong><br>
+                    <span style="background:#cb4335; padding:5px 10px; display:inline-block;"></span> Mars<br>
+                    <span style="background:#f1948a ; padding:5px 10px; display:inline-block;"></span> Avril<br>
+                    <span style="background: #F39C12 ; padding:5px 10px; display:inline-block;"></span> Mai<br>
+                    <span style="background:#FFD700; padding:5px 10px; display:inline-block;"></span> Juin<br>
+                    <span style="background:#32CD32; padding:5px 10px; display:inline-block;"></span> Juillet<br>
+                    <span style="background:#008000; padding:5px 10px; display:inline-block;"></span> Août<br>
+                    <span style="background:#1E90FF; padding:5px 10px; display:inline-block;"></span> Septembre<br>
+                    
+                </div>
+        </div>
+    </div></div> 
+    <div class="page-container">
+        <div class="map-header"> 2 - Estimation par méthode de séquencage (1D-CNN)</div>
+        <div class="map-row">
+            <div id="map2a" class="map-container">
+                <div class="legend">
+                    <strong>Nombre de fauches</strong><br>
+                    <span style="background: #ccd1d1; padding:5px 10px; display:inline-block;"></span> Pas de fauche<br>
+                    <span style="background:#d7bde2; padding:5px 10px; display:inline-block;"></span> 1 fauche<br>
+                    <span style="background:#a569bd; padding:5px 10px; display:inline-block;"></span> 2 fauches<br>
+                    <span style="background:#7d3c98; padding:5px 10px; display:inline-block;"></span> 3 fauches<br>
+                    <span style="background:#4a235a; padding:5px 10px; display:inline-block;"></span> 4 fauches ou plus<br>
+                </div>
+                </div>
+            
+            <div id="map2b" class="map-container">
+                <div class="legend">
+                    <strong>Mois de la 1ère fauche</strong><br>
+                    <span style="background:#cb4335; padding:5px 10px; display:inline-block;"></span> Mars<br>
+                    <span style="background:#f1948a; padding:5px 10px; display:inline-block;"></span> Avril<br>
+                    <span style="background:#F39C12 ; padding:5px 10px; display:inline-block;"></span> Mai<br>
+                    <span style="background:#FFD700; padding:5px 10px; display:inline-block;"></span> Juin<br>
+                    <span style="background:#32CD32; padding:5px 10px; display:inline-block;"></span> Juillet<br>
+                    <span style="background:#008000; padding:5px 10px; display:inline-block;"></span> Août<br>
+                    <span style="background:#1E90FF; padding:5px 10px; display:inline-block;"></span> Septembre<br>
+                    
+                </div>
+        </div>
+        
+    </div></div>    
+        
+    <div class="page-container"> <div class="map-header">3 - Classement d'intensité : comparaison seuilllage/séquencage</div>
+    <div id="map3" style="width: 100%; height: 800px; position: relative;"><div id="legendMap3" class="legend"></div><div id="layerSwitchControl">
+<button onclick="toggleLayerCNN()" style="border: 2px solid green; color: black; padding: 5px 10px; background: light green; font-weight: bold; cursor: pointer;">
+    Basculer les couches
+</button>
+
+       
+
+</div>
+        </div>
+     
+    
+
+ </div>
+        
+    
+
+    
+    <script src="ol.js"></script>
+    <script>
+        function faucheStyle(feature) {
+            const fauche = feature.get('1D_total_f');  // Utilisation du champ '1D_total_f' pour la carte 2
+            console.log("Fauche:", fauche);  // Debugging log
+            let color = '#ccd1d1';
+            if (fauche === 1) color = '#d7bde2';
+            else if (fauche === 2) color = '#a569bd';
+            else if (fauche === 3) color = '#7d3c98';
+            else if (fauche >= 4) color = '#4a235a';
+            return new ol.style.Style({
+                fill: new ol.style.Fill({ color: color }),
+                stroke: new ol.style.Stroke({ color: '#000', width: 0.01 })
+            });
+        }
+
+        function moisStyle(feature) {
+            const mois = feature.get('1D_mois1');  // Utilisation du champ '1D_mois1' pour la carte 2
+            console.log("Mois:", mois);  // Debugging log
+            const colors = ['#FF0000','#FF4500','#cb4335','#f1948a','#F39C12','#FFD700','#32CD32','#008000',
+                            '#1E90FF' , '#0000FF', '#8A2BE2', '#9400D3'];
+            let color = mois ? colors[mois - 1] : '#FFFFFF';
+            return new ol.style.Style({
+                fill: new ol.style.Fill({ color: color }),
+                stroke: new ol.style.Stroke({ color: '#000', width: 0.01 })
+            });
+        }
+        
+         function faucheStyle2(feature) {
+            const fauche = feature.get('SEU_total_');  // Utilisation du champ '1D_total_f' pour la carte 2
+            console.log("Fauche:", fauche);  // Debugging log
+            let color = ' #ccd1d1';
+            if (fauche === 1) color = '#d7bde2';
+            else if (fauche === 2) color = '#a569bd';
+            else if (fauche === 3) color = '#7d3c98';
+            else if (fauche >= 4) color = '#4a235a';
+            return new ol.style.Style({
+                fill: new ol.style.Fill({ color: color }),
+                stroke: new ol.style.Stroke({ color: '#000', width: 0.01 })
+            });
+        }
+
+        
+        function moisStyle2(feature) {
+            const mois = feature.get('SEU_mois1');  // Utilisation du champ '1D_mois1' pour la carte 2
+            console.log("Mois:", mois);  // Debugging log
+            const colors = ['#FF0000','#FF4500','#cb4335','#f1948a','#F39C12','#FFD700','#32CD32','#008000',
+                            '#1E90FF' , '#0000FF', '#8A2BE2', '#9400D3'];
+            let color = mois ? colors[mois - 1] : '#FFFFFF';
+            return new ol.style.Style({
+                fill: new ol.style.Fill({ color: color }),
+                stroke: new ol.style.Stroke({ color: '#000', width: 0.01 })
+            });
+        }
+        
+        function seuDegInStyle(feature) {
+        const deg = feature.get('SEU_DEG_IN');  // Champ texte 'SEU_DEG_IN' pour la couche SEUILLAGE_final_web
+        let color = ' #ccd1d1';  // Couleur par défaut
+        if (deg === 'extensive') color = '#00FF00';  // Exemple : 'Low' = vert
+        else if (deg === 'medium') color = '#FFFF00';  // Exemple : 'Medium' = jaune
+        else if (deg === 'intensive') color = '#FF0000';  // Exemple : 'High' = rouge
+        return new ol.style.Style({
+            fill: new ol.style.Fill({ color: color }),
+            stroke: new ol.style.Stroke({ color: '#000', width: 0.2 })
+        });
+    }
+
+    // Fonction de style pour la couche CNN_total_web (carte 3)
+    function cnnDegIntStyle(feature) {
+        const deg = feature.get('1D_DEG_INT');  // Champ texte '1D_DEG_INT' pour la couche CNN_total_web
+        let color = ' #ccd1d1';  // Couleur par défaut
+        if (deg === 'extensive') color = '#00FF00';  // Exemple : 'Low' = vert
+        else if (deg === 'medium') color = '#FFFF00';  // Exemple : 'Medium' = jaune
+        else if (deg === 'intensive') color = '#FF0000';  // Exemple : 'High' = rouge
+        return new ol.style.Style({
+            fill: new ol.style.Fill({ color: color }),
+            stroke: new ol.style.Stroke({ color: '#000', width: 0.2 })
+        });
+    }
+
+ 
+
+        function zoomToLayer(map, vectorSource) {
+            vectorSource.once('change', function () {
+                if (vectorSource.getState() === 'ready') {
+                    const extent = vectorSource.getExtent();
+                    map.getView().fit(extent, { duration: 100, padding: [100, 100, 100, 100] });
+                    
+                    
+                }
+            });
+        }
+ 
+        const vectorSource1a = new ol.source.Vector({
+            url: 'SEUILLAGE_final_3857_10.geojson',
+            format: new ol.format.GeoJSON()
+        });
+
+        const vectorSource1b = new ol.source.Vector({
+            url: 'SEUILLAGE_final_3857_10.geojson',
+            format: new ol.format.GeoJSON()
+        });
+
+        const vectorSource2a = new ol.source.Vector({
+            url: 'SEUILLAGE_final_3857_10.geojson',
+            format: new ol.format.GeoJSON()
+        });
+
+        const vectorSource2b = new ol.source.Vector({
+            url: 'SEUILLAGE_final_3857_10.geojson',
+            format: new ol.format.GeoJSON()
+        });
+
+        
+         const vectorSource3 = new ol.source.Vector({
+            url: 'SEUILLAGE_final_3857_10.geojson',
+            format: new ol.format.GeoJSON()
+        });
+
+        const vectorSource3b = new ol.source.Vector({
+            url: 'SEUILLAGE_final_3857_10.geojson',
+            format: new ol.format.GeoJSON()
+        });
+
+        const map1a = new ol.Map({
+            target: 'map1a',
+            layers: [
+                new ol.layer.Tile({
+                    source: new ol.source.OSM(),
+                    opacity: 0.3
+                }),
+                new ol.layer.Vector({
+                    source: vectorSource1a,
+                    style: faucheStyle2
+                })
+            ],
+            view: new ol.View({
+                projection: 'EPSG:3857',
+                center: [0, 0],
+                zoom: 10
+            })
+        });
+
+        const map1b = new ol.Map({
+            target: 'map1b',
+            layers: [
+                new ol.layer.Tile({
+                    source: new ol.source.OSM(),
+                    opacity: 0.3
+                }),
+                new ol.layer.Vector({
+                    source: vectorSource1b,
+                    style: moisStyle2
+                })
+            ],
+            view: new ol.View({
+                projection: 'EPSG:3857',
+                center: [0, 0],
+                zoom: 10
+            })
+        });
+
+        const map2a = new ol.Map({
+            target: 'map2a',
+            layers: [
+                new ol.layer.Tile({
+                    source: new ol.source.OSM(),
+                    opacity: 0.3
+                }),
+                new ol.layer.Vector({
+                    source: vectorSource2a,
+                    style: faucheStyle
+                })
+            ],
+            view: new ol.View({
+                projection: 'EPSG:3857',
+                center: [0, 0],
+                zoom: 10
+            })
+        });
+
+        const map2b = new ol.Map({
+            target: 'map2b',
+            layers: [
+                new ol.layer.Tile({
+                    source: new ol.source.OSM(),
+                    opacity: 0.3
+                }),
+                new ol.layer.Vector({
+                    source: vectorSource2b,
+                    style: moisStyle
+                })
+            ],
+            view: new ol.View({
+                projection: 'EPSG:3857',
+                center: [0, 0],
+                zoom: 10
+            })
+        });
+        
+        
+        
+        
+
+         // Fonction pour ajouter une carte avec les deux couches et une option de cocher/décocher pour la deuxième couche
+  
+       
+        // La couche SEUILLAGE_final_web est visible par défaut
+        const layerSEU = new ol.layer.Vector({
+            source: vectorSource3,
+            style: seuDegInStyle,
+            visible: true  // Visible par défaut
+        });
+
+        // La couche CNN_total_web est initialement masquée
+        const layerCNN = new ol.layer.Vector({
+            source: vectorSource3b,
+            style: cnnDegIntStyle,
+            visible: false  // Masquée par défaut
+        });
+        
+        
+        
+        const map3 = new ol.Map({
+            target: 'map3',
+            layers: [
+                new ol.layer.Tile({
+                    source: new ol.source.OSM(),
+                    opacity: 0.5
+                }),
+                layerSEU,  // Couche SEUILLAGE_final_web par défaut visible
+                layerCNN  // Couche CNN_total_web, masquée au départ
+            ],
+            view: new ol.View({
+                projection: 'EPSG:3857',
+                center: [0, 0],
+                zoom: 10
+            })
+        });
+
+        
+        
+         function updateLegend() {
+            const legend = document.getElementById("legendMap3");
+            if (layerCNN.getVisible()) {
+                legend.innerHTML = `
+                    <strong>Intensité d'exploitation selon 1D-CNN</strong>
+                    <div><span style="background:#00FF00; width: 15px; height: 15px; display: inline-block; margin-right: 5px;"></span>Extensive </div>
+                    <div><span style="background:#FFFF00; width: 15px; height: 15px; display: inline-block; margin-right: 5px;"></span>Medium</div>
+                    <div><span style="background:#FF0000; width: 15px; height: 15px; display: inline-block; margin-right: 5px;"></span>Intensive</div>
+                `;
+            } else {
+                legend.innerHTML = `
+                   <strong>Intensité d'exploitation selon seuillage</strong>
+                    <div><span style="background:#00FF00; width: 15px; height: 15px; display: inline-block; margin-right: 5px;"></span>Extensive </div>
+                    <div><span style="background:#FFFF00; width: 15px; height: 15px; display: inline-block; margin-right: 5px;"></span>Medium</div>
+                    <div><span style="background:#FF0000; width: 15px; height: 15px; display: inline-block; margin-right: 5px;"></span>Intensive</div>
+                `;
+            }
+        }
+        
+        function toggleLayerCNN() {
+            layerCNN.setVisible(!layerCNN.getVisible());
+            layerSEU.setVisible(!layerSEU.getVisible());
+            updateLegend();
+        }
+
+        updateLegend();
+
+        zoomToLayer(map1a, vectorSource1a);
+        zoomToLayer(map1b, vectorSource1b);
+        zoomToLayer(map2a, vectorSource2a);
+        zoomToLayer(map2b, vectorSource2b);
+        zoomToLayer(map3, vectorSource3);
+        
+        // Liste des cartes à synchroniser
+
+        
+        // Liste de toutes les cartes à synchroniser
+const maps = [map1a, map1b, map2a, map2b, map3];
+
+// Flag pour éviter la boucle infinie
+let isSyncing = false;
+
+// Fonction pour synchroniser toutes les cartes
+function syncMaps(sourceMap) {
+    if (isSyncing) return; // Éviter la boucle infinie
+    isSyncing = true;
+
+    const view = sourceMap.getView();
+    const center = view.getCenter();
+    const zoom = view.getZoom();
+
+    maps.forEach(map => {
+        if (map !== sourceMap) { // Ne pas mettre à jour la carte source
+            map.getView().setCenter(center);
+            map.getView().setZoom(zoom);
+        }
+    });
+
+    isSyncing = false;
+}
+
+// Ajout d'écouteurs d'événements sur chaque carte
+maps.forEach(map => {
+    map.getView().on('change:center', () => syncMaps(map));
+    map.getView().on('change:resolution', () => syncMaps(map));
+});
+
+        
+        
+        
+    </script>
+    
+    
+</body>
+</html>
+
